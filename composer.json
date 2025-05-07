@@ -1,5 +1,5 @@
 {
-  "name": "lanerp/lanerp-custom-field",
+  "name": "lanerp/custom-field",
   "description": "lanerp自定义字段。",
   "type": "library",
   "license": "MIT",
@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "lanerp\\common\\": "src/"
+      "lanerp\\dong\\": "src/"
     },
     "files": [
     ]

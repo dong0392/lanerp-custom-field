@@ -1,6 +1,6 @@
 <?php
 
-namespace lanerp\common\Helpers\CustomField;
+namespace lanerp\dong\CustomField;
 
 
 use lanerp\common\Helpers\Arrs;
@@ -98,8 +98,8 @@ class Form
             $this->pk    = $formInfo->pk ?? "id";
         }
         $this->form          = $form;
-        $this->uid           = $uid ?? authUser()->id;
-        $this->companyId     = $companyId ?? authUser()->company_id;
+        $this->uid           = $uid ?? user()->id;
+        $this->companyId     = $companyId ?? user()->company_id;
         $this->withCompanyId = $this->withUid = $this->withDeletedAt = true;
         $this->fields        = $fields;
         $this->genFormField();
