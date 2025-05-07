@@ -30,7 +30,7 @@ class ApprovalCreate
     public function __construct($approvalType, ?Form $form = null, object $user = null)
     {
         $this->form         = $form ?? Form::init();
-        $this->user         = $user ?? authUser();
+        $this->user         = $user ?? user();
         $this->uid          = $this->user->id;
         $this->companyId    = $this->user->company_id;
         $this->approvalType = $approvalType;

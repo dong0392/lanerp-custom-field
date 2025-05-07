@@ -2,7 +2,7 @@
 
 namespace lanerp\dong\Models;
 
-use App\Helpers\Arrs;
+use lanerp\common\Helpers\Arrs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;

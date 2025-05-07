@@ -2,7 +2,7 @@
 
 namespace lanerp\dong\Models;
 
-use App\Helpers\Arrs;
+use lanerp\common\Helpers\Arrs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use function Symfony\Component\String\s;
@@ -62,7 +62,7 @@ class CustomFieldReset extends Model
         $resetFieldIds = $fields->filter(fn($field) => $field['is_reset'] === 1)->pluck('field_id')->all();
         if ($resetFieldIds) {
             $resetFields = static::query()->select(static::columns())
-                ->where(["company_id" => $companyId ?? authUser()->company_id])->whereIn("field_id", $resetFieldIds)
+                ->where(["company_id" => $companyId ?? user()->company_id])->whereIn("field_id", $resetFieldIds)
                 ->get()->keyBy("field_id");
             //dd($resetFields);
             if ($resetFields) {

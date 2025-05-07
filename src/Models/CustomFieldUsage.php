@@ -2,7 +2,7 @@
 
 namespace lanerp\dong\Models;
 
-use App\Helpers\Arrs;
+use lanerp\common\Helpers\Arrs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -80,7 +80,7 @@ class CustomFieldUsage extends Model
         //多个类型$fieldKeys，可以先合并，再往过传
         $fieldKeys = collect($fieldKeys)->filter()->pluck('field_key')->unique()->implode(',');
         $fieldKeys && static::query()->updateOrInsert(
-            ['company_id' => authUser()->company_id, 'usage_table' => $usageTable, 'pk_id' => $pkId, 'field_form' => $fieldForm],
+            ['company_id' => user()->company_id, 'usage_table' => $usageTable, 'pk_id' => $pkId, 'field_form' => $fieldForm],
             ['field_keys' => $fieldKeys]
         );
         return;
@@ -96,7 +96,7 @@ class CustomFieldUsage extends Model
     public static function del($usageTable, $pkId)
     {
         return static::query()
-            ->where(['company_id' => authUser()->company_id, 'usage_table' => $usageTable, 'pk_id' => $pkId])
+            ->where(['company_id' => user()->company_id, 'usage_table' => $usageTable, 'pk_id' => $pkId])
             ->delete();
     }
 

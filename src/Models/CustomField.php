@@ -2,7 +2,7 @@
 
 namespace lanerp\dong\Models;
 
-use App\Helpers\Arrs;
+use lanerp\common\Helpers\Arrs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -93,7 +93,7 @@ class CustomField extends Model
     public static function initForm($fieldForm, $companyId = null)
     {
         $model             = new static();
-        $model->company_id = $companyId ?? authUser()->company_id;
+        $model->company_id = $companyId ?? user()->company_id;
         $model->fieldForm  = $fieldForm;
         return $model;
     }
@@ -285,7 +285,7 @@ class CustomField extends Model
                 ->select(['id as field_id', 'field_key', 'p_field_key', 'field_type', 'status', 'is_reset', 'is_system'])
                 ->where([
                     "field_form" => $form,
-                    [fn($query) => $query->where("company_id", authUser()->company_id)->orWhere('is_system', static::SYSTEM)],
+                    [fn($query) => $query->where("company_id", user()->company_id)->orWhere('is_system', static::SYSTEM)],
                     ['field_type', '<>', "system"]
                 ])
                 ->get();
@@ -293,7 +293,7 @@ class CustomField extends Model
             $resetFieldIds = $formField->filter(fn($field) => $field['is_reset'] === 1)->pluck('field_id')->all();
             if ($resetFieldIds) {
                 $resetFields = CustomFieldReset::query()->select(["status"])
-                    ->where(["company_id" => authUser()->company_id])->whereIn("field_id", $resetFieldIds)
+                    ->where(["company_id" => user()->company_id])->whereIn("field_id", $resetFieldIds)
                     ->get()->keyBy("field_id");
                 if ($resetFields) {
                     //可加&可不加&
