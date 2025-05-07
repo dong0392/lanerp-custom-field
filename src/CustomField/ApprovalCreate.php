@@ -2,10 +2,10 @@
 
 namespace lanerp\dong\CustomField;
 
-use App\Models\Approval;
-use App\Models\ApprovalFormInfo;
-use App\Models\ApprovalSet;
-use App\Models\CustomForm;
+use lanerp\dong\Models\Approval;
+use lanerp\dong\Models\ApprovalFormInfo;
+use lanerp\dong\Models\ApprovalSet;
+use lanerp\dong\Models\CustomForm;
 use App\Services\Api\Approval\ApprovalCreateService;
 use App\Services\Api\Approval\ApprovalNodeService;
 

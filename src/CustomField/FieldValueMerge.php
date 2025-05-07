@@ -2,7 +2,7 @@
 
 namespace lanerp\dong\CustomField;
 
-use App\Models\CustomField;
+use lanerp\dong\Models\CustomField;
 
 class FieldValueMerge
 {

@@ -3,16 +3,16 @@
 namespace lanerp\dong\CustomField;
 
 use lanerp\common\Helpers\Strs;
-use App\Models\Customer;
-use App\Models\CustomerContact;
-use App\Models\Department;
-use App\Models\Order;
-use App\Models\Project;
-use App\Models\ProjectQuotation;
-use App\Models\ProjectStage;
-use App\Models\User;
-use App\Models\UserTag;
-use App\Models\WorkOrderType;
+use lanerp\dong\Models\Customer;
+use lanerp\dong\Models\CustomerContact;
+use lanerp\dong\Models\Department;
+use lanerp\dong\Models\Order;
+use lanerp\dong\Models\Project;
+use lanerp\dong\Models\ProjectQuotation;
+use lanerp\dong\Models\ProjectStage;
+use lanerp\dong\Models\User;
+use lanerp\dong\Models\UserTag;
+use lanerp\dong\Models\WorkOrderType;
 
 class ValueCompile
 {

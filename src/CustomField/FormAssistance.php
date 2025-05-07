@@ -2,11 +2,11 @@
 
 namespace lanerp\dong\CustomField;
 
-use App\Models\ApprovalFormInfo;
-use App\Models\ApprovalRelateControl;
-use App\Models\CustomField;
-use App\Models\CustomFieldInvoice;
-use App\Models\CustomFieldSnInc;
+use lanerp\dong\Models\ApprovalFormInfo;
+use lanerp\dong\Models\ApprovalRelateControl;
+use lanerp\dong\Models\CustomField;
+use lanerp\dong\Models\CustomFieldInvoice;
+use lanerp\dong\Models\CustomFieldSnInc;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redis;
 use Predis\Client;

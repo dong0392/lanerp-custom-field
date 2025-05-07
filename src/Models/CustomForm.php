@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace lanerp\dong\Models;
 
 use App\Helpers\CustomField\Form;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

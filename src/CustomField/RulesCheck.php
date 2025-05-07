@@ -3,11 +3,11 @@
 namespace lanerp\dong\CustomField;
 
 use lanerp\common\Helpers\Strs;
-use App\Models\Customer;
-use App\Models\CustomerContact;
-use App\Models\Department;
-use App\Models\User;
-use App\Models\UserTag;
+use lanerp\dong\Models\Customer;
+use lanerp\dong\Models\CustomerContact;
+use lanerp\dong\Models\Department;
+use lanerp\dong\Models\User;
+use lanerp\dong\Models\UserTag;
 
 class RulesCheck
 {
