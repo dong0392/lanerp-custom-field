@@ -1,0 +1,20 @@
+{
+  "name": "lanerp/lanerp-custom-field",
+  "description": "lanerp自定义字段。",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "dong lin",
+      "email": "zdo_ng@163.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "lanerp\\common\\": "src/"
+    },
+    "files": [
+    ]
+  },
+  "require": {}
+}
