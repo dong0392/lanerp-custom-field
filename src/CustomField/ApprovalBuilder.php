@@ -154,6 +154,9 @@ class ApprovalBuilder
      */
     public function execute()
     {
+        if (empty($this->overviewFields)) {
+            _throwException('审批流不能为空');
+        }
         $mainParams = [
             'user_id'         => $this->userId,
             'company_id'      => $this->companyId,
@@ -171,8 +174,8 @@ class ApprovalBuilder
                 'content'   => $this->contentParams,     // 审批内容数据（如 custom_details、business_data）
                 'flowNodes' => $this->flowParams ?? [],   // 流程节点数据（如节点ID、审批人、顺序等）
             ]);
-        $result     = $response->result()['original'];
-        if ($result['code'] !== 200) {
+        $result     = $response->result();
+        if (empty($result) || (isset($result['original']) && $result['original']['code'] !== 200)) {
             _throwException('审批创建失败');
         }
 
