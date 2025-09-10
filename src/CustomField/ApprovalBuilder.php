@@ -99,9 +99,9 @@ class ApprovalBuilder
     /**
      * 设置审批内容
      */
-    public function setApprovalContent(bool $isGenCustomDetails = false, ?array $content = null): self
+    public function setApprovalContent(bool $isGenCustomDetails = false, ?array $content = null, $contentKey = 'custom_details'): self
     {
-        $this->contentParams['custom_details'] = $isGenCustomDetails
+        $this->contentParams[$contentKey] = $isGenCustomDetails
             ? FieldValueMerge::get($this->form->formFields, $this->formParams) // 生成自定义字段
             : ($content ?? $this->formParams); // 直接使用传入内容或formParams
         return $this;
