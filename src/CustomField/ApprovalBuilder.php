@@ -154,7 +154,7 @@ class ApprovalBuilder
      */
     public function execute()
     {
-        if (empty($this->overviewFields)) {
+        if (empty($this->flowParams)) {
             _throwException('审批流不能为空');
         }
         $mainParams = [
