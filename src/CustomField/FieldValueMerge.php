@@ -29,6 +29,7 @@ class FieldValueMerge
             $fieldKey    = $field['field_key'];
             $extend      = $field['extend'] ?? [];
             $hiddenField = $extend["initial_display"] ?? false;
+            $hiddenField = $hiddenField && (!isset($extend['initial_display_delete']) && $field['is_system_key'] === 1);
             if (isset($values[$fieldKey]) && !$hiddenField) {
                 $res        = [
                     'field_key'  => $field['field_key'],
@@ -74,7 +75,8 @@ class FieldValueMerge
         $tableTitle  = [];
         $fieldValues = [];
         if (isset($field['_child'])) {
-            $filteredFields = array_filter($field['_child'], static fn($fieldItem) => !(isset($fieldItem['extend']['initial_display']) && $fieldItem['extend']['initial_display']));
+            //$filteredFields = array_filter($field['_child'], static fn($fieldItem) => !(isset($fieldItem['extend']['initial_display']) && $fieldItem['extend']['initial_display']));
+            $filteredFields = array_filter($field['_child'], static fn($fieldItem) => !(isset($fieldItem['extend']['initial_display']) && $fieldItem['extend']['initial_display'] && (!isset($fieldItem['extend']['initial_display_delete']) && $field['is_system_key'] === 1)));
             $tableTitle     = array_map(function ($field) {
                 return array(
                     "field_key"  => $field["field_key"],
