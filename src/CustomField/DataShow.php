@@ -267,12 +267,12 @@ class DataShow
         //$value      = explode(",", $data[$fieldKey]);
         $value        = Strs::explodeToInt($data[$fieldKey]);
         $tempFieldKey = $this->rtrimId($fieldKey);
-        $requiredKeys = [$fieldKey, "{$tempFieldKey}_name", "{$tempFieldKey}_phone"];
+        $requiredKeys = [$fieldKey, "{$tempFieldKey}_name"];//, "{$tempFieldKey}_phone"
         if (count(array_intersect_key($data, array_flip($requiredKeys))) === count($requiredKeys)) {
-            [$contactId, $contactName, $contactPhone] = $requiredKeys;
+            [$contactId, $contactName] = $requiredKeys;//, $contactPhone
             return $data[$contactId] ? [
                 "value" => $value,
-                "text"  => [["id" => $data[$contactId], "name" => $data[$contactName], "phone" => $data[$contactPhone]]]
+                "text"  => [["id" => $data[$contactId], "name" => $data[$contactName]]]//, "phone" => $data[$contactPhone]
             ] : ["value" => [], "text" => []];
         }
         $this->queryTypeValue["customer_contact"][] = $data[$fieldKey];

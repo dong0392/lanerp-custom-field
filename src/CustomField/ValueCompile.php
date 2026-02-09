@@ -33,7 +33,7 @@ class ValueCompile
 
     public static function customerContactQuery($ids): \Illuminate\Database\Eloquent\Collection
     {
-        return CustomerContact::query()->whereIn("id", $ids)->get(["id", "name", "phone"]);
+        return CustomerContact::query()->whereIn("id", $ids)->get(["id", "name"]);//, "phone"
     }
 
     public static function projectQuotationQuery($ids): \Illuminate\Database\Eloquent\Collection
@@ -196,17 +196,17 @@ class ValueCompile
     }
 
     //编译客户联系人
-    public static function customerContact($value, $way = self::wayRelated, $columns = ["contact_id", "contact_name", "contact_phone"])
+    public static function customerContact($value, $way = self::wayRelated, $columns = ["contact_id", "contact_name"])//, "contact_phone"
     {
         if (!$value) return ["value" => [], "text" => []];
         if ($way === self::wayRelated) {//方式三 已经关联出值
-            [$contactId, $contactName, $contactPhone] = $columns;
+            [$contactId, $contactName] = $columns;//, $contactPhone
             $data = [
                 "value" => $value[$contactId] ? [$value[$contactId]] : [],
-                "text"  => $value[$contactId] ? [["id" => $value[$contactId], "name" => $value[$contactName], "phone" => $value[$contactPhone]]] : []
+                "text"  => $value[$contactId] ? [["id" => $value[$contactId], "name" => $value[$contactName]]] : []//, "phone" => $value[$contactPhone]
             ];
         } else {
-            $data = static::baseWayArr("customerContactQuery", $value, $way, array_combine(["id", "name", "phone"], $columns));
+            $data = static::baseWayArr("customerContactQuery", $value, $way, array_combine(["id", "name"], $columns));//, "phone"
         }
         return $data;
     }
